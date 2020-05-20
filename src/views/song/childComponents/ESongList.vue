@@ -4,7 +4,6 @@
     border
     style="width: 100%">
     <el-table-column
-      fixed
       prop="id"
       label="ID"
       width="150">
@@ -37,9 +36,8 @@
       :formatter="formatterStatus">
     </el-table-column>
     <el-table-column
-      fixed="right"
       label="操作">
-      <template slot-scope="scope">
+      <template slot-scope="scope" v-if="$store.state.isAdmin">
         <el-button @click="editSong(scope.row)" type="text" size="big">编辑</el-button>
         <el-button @click="delSong(scope.row)" type="text" size="big">删除</el-button>
       </template>
