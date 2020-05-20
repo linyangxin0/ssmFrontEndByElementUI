@@ -1,0 +1,42 @@
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import qs from 'qs'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
+Vue.prototype.$qs = qs;
+
+
+Vue.use(ElementUI);
+
+Vue.config.productionTip = false
+
+
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')
+
+
+// * 全局钩子
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    // * 对于需要auth的路径
+    // * 没有token信息，redirect to login
+    if (!localStorage.token) {
+      next({
+        path: '/404',
+        query: {redirect: to.fullPath}
+      })
+    } else {
+      next()
+    }
+  } else {
+    next() // 确保一定要调用 next()
+  }
+})
+
+
