@@ -5,54 +5,58 @@
       <tr>
         <td ><span>ID：</span></td>
         <td>
-          <input type="text" placeholder="请输入歌曲名称" class="edit-input" v-model="editId" disabled>
+          <el-input v-model="editId" clearable disabled class="edit-input"></el-input>
         </td>
       </tr>
 
       <tr>
         <td ><span>歌曲名称：</span></td>
         <td>
-          <input type="text" placeholder="请输入歌曲名称" class="edit-input" v-model="editName">
+          <el-input class="edit-input" placeholder="请输入歌曲名称" v-model="editName" clearable ></el-input>
         </td>
       </tr>
 
       <tr>
         <td><span>歌曲描述：</span></td>
         <td>
-          <input type="text" placeholder="请输入歌曲描述" class="edit-input" v-model="editInfo">
+          <el-input class="edit-input" placeholder="请输入歌曲描述" v-model="editInfo" clearable ></el-input>
+
         </td>
       </tr>
 
       <tr>
         <td><span>作者：</span></td>
         <td>
-          <input type="text" placeholder="请输入作者" class="edit-input" v-model="editAuthor">
+          <el-input class="edit-input" placeholder="请输入作者" v-model="editAuthor" clearable ></el-input>
+
         </td>
       </tr>
 
       <tr>
         <td><span>请选择日期：</span></td>
         <td>
-          <input type="date" class="edit-input" v-model="editUpdateTime">
+          <el-date-picker v-model="editUpdateTime" type="date" placeholder="选择日期" class="edit-input"></el-date-picker>
+
         </td>
       </tr>
 
       <tr>
         <td><span>请选择状态：</span></td>
         <td>
-          <select class="edit-input" v-model="editStatus">
-            <option value="0">设计中</option>
-            <option value="1">发布</option>
-          </select>
+
+          <el-select v-model="editStatus" placeholder="请选择" class="edit-input">
+            <el-option value=0 label="设计中" :key="0"></el-option>
+            <el-option value=1 label="发布" :key="1"></el-option>
+          </el-select>
         </td>
       </tr>
 
       <tr>
         <td class="btn-center">
-          <button class="edit-btn" @click="clickEditSong">确定</button>
+          <el-button type="success" @click="clickEditSong">确定</el-button>
         </td>
         <td class="btn-center">
-          <button class="edit-btn"  @click="backClick">取消</button>
+          <el-button type="info" @click="backClick">取消</el-button>
         </td>
       </tr>
     </table>
@@ -74,7 +78,7 @@
         editInfo:'',
         editAuthor:'',
         editUpdateTime:Date,
-        editStatus:0
+        editStatus:'0'
       }
     },
     props:{
@@ -104,7 +108,10 @@
         this.editInfo=res.info
         this.editAuthor=res.author
         this.editUpdateTime=res.updateTime
-        this.editStatus=res.status
+        //转为字符串，为了select可以自动选择
+        this.editStatus=res.status+''
+
+        console.log(typeof (this.editStatus))
 
         //时间戳转换为日期
         this.editUpdateTime = formatDate(new Date(this.editUpdateTime), 'yyyy-MM-dd')
@@ -132,11 +139,11 @@
   }
 
   .edit-input{
-    padding-left: 20px;
+    margin-left: 20px;
     width: 300px;
     height: 40px;
-    border-radius: 5px;
-    border: 2px solid #d3d3d3;
+    /*border-radius: 5px;*/
+    /*border: 2px solid #d3d3d3;*/
   }
 
   .btn-center{

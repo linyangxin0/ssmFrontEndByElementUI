@@ -4,47 +4,49 @@
       <tr>
         <td ><span>歌曲名称：</span></td>
         <td>
-          <input type="text" placeholder="请输入歌曲名称" class="add-input" v-model="addName">
+          <el-input class="add-input" placeholder="请输入歌曲名称" v-model="addName" clearable ></el-input>
         </td>
       </tr>
 
       <tr>
         <td><span>歌曲描述：</span></td>
         <td>
-          <input type="text" placeholder="请输入歌曲描述" class="add-input" v-model="addInfo">
+          <el-input class="add-input" placeholder="请输入歌曲描述" v-model="addInfo" clearable ></el-input>
+
         </td>
       </tr>
 
       <tr>
         <td><span>作者：</span></td>
         <td>
-          <input type="text" placeholder="请输入作者" class="add-input" v-model="addAuthor">
+          <el-input class="add-input" placeholder="请输入作者" v-model="addAuthor" clearable ></el-input>
+
         </td>
       </tr>
 
       <tr>
         <td><span>请选择日期：</span></td>
         <td>
-          <input type="date" class="add-input" v-model="addUpdateTime">
+          <el-date-picker v-model="addUpdateTime" type="date" placeholder="选择日期" class="add-input"></el-date-picker>
         </td>
       </tr>
 
       <tr>
         <td><span>请选择状态：</span></td>
         <td>
-          <select class="add-input" v-model="addStatus">
-            <option value="0">设计中</option>
-            <option value="1">发布</option>
-          </select>
+          <el-select v-model="addStatus" placeholder="请选择" class="add-input">
+            <el-option value=0 label="设计中" :key="0"></el-option>
+            <el-option value=1 label="发布" :key="1"></el-option>
+          </el-select>
         </td>
       </tr>
 
       <tr>
         <td class="btn-center">
-          <button class="add-btn" @click="clickAddSong">确定</button>
+          <el-button type="success" @click="clickAddSong">确定</el-button>
         </td>
         <td class="btn-center">
-          <button class="add-btn"  @click="backClick">取消</button>
+          <el-button type="info" @click="backClick">取消</el-button>
         </td>
       </tr>
     </table>
@@ -62,8 +64,8 @@
         addName:'',
         addInfo:'',
         addAuthor:'',
-        addUpdateTime:Date,
-        addStatus:0
+        addUpdateTime:'',
+        addStatus:'0'
       }
     },
     methods:{
@@ -114,11 +116,11 @@
   }
 
   .add-input{
-    padding-left: 20px;
+    margin-left: 20px;
     width: 300px;
     height: 40px;
-    border-radius: 5px;
-    border: 2px solid #d3d3d3;
+    /*border-radius: 5px;*/
+    /*border: 2px solid #d3d3d3;*/
   }
 
   .btn-center{

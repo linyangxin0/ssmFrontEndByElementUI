@@ -46,7 +46,6 @@
           localStorage.setItem('token', res.data.token);
           localStorage.setItem('userId', res.data.userId);
           localStorage.setItem('isAdmin', res.data.isAdmin);
-          console.log(localStorage.getItem('isAdmin'))
           this.$store.commit('addUserName', res.data.user.name)
           this.$store.commit('changeIsAdmin', res.data.isAdmin)
           alert('登陆成功')

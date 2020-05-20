@@ -22,7 +22,6 @@ export function request(config) {
   //2.2响应拦截,也要return出去
   //1、可以对数据进行处理
   instance.interceptors.response.use(res=>{
-    console.log(res)
 
     let data = res.data;
     // * 正常返回数据

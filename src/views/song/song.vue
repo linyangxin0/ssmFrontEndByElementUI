@@ -1,8 +1,7 @@
 <template>
   <div class="content">
     <song-top-bar @searchSong="searchSong" @findAll="findAll"/>
-    <song-list :song-list="songsList"
-               @delSong="delSong" @editSong="editSong"/>
+    <e-song-list :song-list="songsList" @delSong="delSong" @editSong="editSong"/>
   </div>
 </template>
 
@@ -10,10 +9,11 @@
   import SongTopBar from "./childComponents/SongTopBar";
   import SongList from "./childComponents/SongList";
   import {songFindAll,songSearch,delASong} from "../../network/song";
+  import ESongList from "./childComponents/ESongList";
 
   export default {
     name: "song",
-    components: {SongList, SongTopBar},
+    components: {ESongList, SongList, SongTopBar},
     data(){
       return{
         songsList:[],
@@ -43,15 +43,13 @@
         })
       },
       editSong(e){
-        this.theEditSong=e
         console.log(e)
-        console.log(e.id)
-        this.$router.push('/song/editSong/'+e.id)
+        this.theEditSong=e
+        this.$router.push('/song/editSong/'+e)
       },
       _songFindAll(){
         songFindAll().then(res=>{
           this.songsList=res
-          console.log(res)
         })
       }
     }

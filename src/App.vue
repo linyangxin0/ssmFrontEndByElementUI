@@ -3,14 +3,16 @@
     <div class="content">
         <router-view/>
     </div>
-    <main-tab-bar v-if="$route.meta.showTab"/>
+<!--    <main-tab-bar />-->
+    <menu-bar v-if="$route.meta.showTab"/>
   </div>
 </template>
 
 <script>
   import MainTabBar from "./components/content/MainTabBar/MainTabBar";
+  import MenuBar from "./components/content/MenuBar/MenuBar";
   export default {
-    components: {MainTabBar}
+    components: {MenuBar, MainTabBar}
   }
 </script>
 
