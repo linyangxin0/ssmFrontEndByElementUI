@@ -19,7 +19,15 @@
       <template slot-scope="scope" v-if="$store.state.isAdmin">
         <el-button @click="getSongList(scope.row)" type="text" size="big">查看</el-button>
         <el-button @click="addSongToSongList(scope.row)" type="text" size="big">添加</el-button>
-        <el-button @click="delSongList(scope.row)" type="text" size="big">删除</el-button>
+        <el-popconfirm
+          confirmButtonText='确定'
+          cancelButtonText='取消'
+          icon="el-icon-info"
+          iconColor="red"
+          @onConfirm="delSongList(scope.row)"
+          title="确定删除？">
+          <el-button type="text" size="big" slot="reference" class="del-btn">删除</el-button>
+        </el-popconfirm>
       </template>
     </el-table-column>
   </el-table>
@@ -52,4 +60,7 @@
 
 <style scoped>
 
+  .del-btn{
+    padding-left: 12px;
+  }
 </style>

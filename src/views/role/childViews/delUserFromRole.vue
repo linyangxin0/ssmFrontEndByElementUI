@@ -7,12 +7,11 @@
 
 <script>
   import {findUserByRoleId,delUserFromRole} from "../../../network/Role";
-  import DelUserFromRoleList from "../childComponents/delUserFromRoleList";
   import EDelUserFromRoleList from "../childComponents/EDelUserFromRoleList";
 
   export default {
     name: "delUserFromRole",
-    components: {EDelUserFromRoleList, DelUserFromRoleList},
+    components: {EDelUserFromRoleList},
     data(){
       return{
         roleId:0,

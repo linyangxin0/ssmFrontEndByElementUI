@@ -10,14 +10,13 @@
 <script>
 
   import SongListTopBar from "./childComponents/SongListTopBar";
-  import SongListList from "./childComponents/SongListList";
 
   import {songListFindAll,delSongList,findSongListByName} from "../../network/songList";
   import ESongListList from "./childComponents/ESongListList";
 
   export default {
     name: "songList",
-    components: {ESongListList, SongListTopBar, SongListList},
+    components: {ESongListList, SongListTopBar},
     data(){
       return{
         songListList:[]

@@ -8,12 +8,11 @@
 <script>
 
   import {findSongListsSong,delSongFromSongList} from "../../../network/songList";
-  import SongListShowList from "../childComponents/songListShowList";
   import ESongListShowList from "../childComponents/ESongListShowList";
 
   export default {
     name: "songListShow",
-    components: {ESongListShowList, SongListShowList},
+    components: {ESongListShowList},
     data(){
       return{
         id:0,

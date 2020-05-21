@@ -7,8 +7,6 @@
 <script>
   import {findSongListNotIn,addSongList} from "../../../network/deviceSong";
 
-  import DeviceSongShowList from "../childComponents/deviceSongShowList";
-  import EDeviceSongList from "../childComponents/EDeviceSongList";
   import EDeviceSongShowList from "../childComponents/EDeviceSongShowList";
   export default {
     name: "deviceSongShow",

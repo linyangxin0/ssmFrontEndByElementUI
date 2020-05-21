@@ -114,7 +114,6 @@
         //转为字符串，为了select可以自动选择
         this.editStatus=res.status+''
 
-        console.log(typeof (this.editStatus))
 
         //时间戳转换为日期
         this.editUpdateTime = formatDate(new Date(this.editUpdateTime), 'yyyy-MM-dd')

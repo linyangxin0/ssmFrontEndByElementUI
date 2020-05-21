@@ -10,7 +10,6 @@
 
   import {deviceFindAll} from "../../network/deviceSong";
 
-  import DeviceSongList from "./childComponents/deviceSongList";
   import DeviceSongTopBar from "./childComponents/deviceSongTopBar";
   import {deviceSearch} from "../../network/device";
   import EDeviceSongList from "./childComponents/EDeviceSongList";
@@ -22,7 +21,7 @@
         deviceList:[]
       }
     },
-    components: {EDeviceSongList, DeviceSongTopBar, DeviceSongList},
+    components: {EDeviceSongList, DeviceSongTopBar},
     created() {
       deviceFindAll().then(res=>{
         this.deviceList=res

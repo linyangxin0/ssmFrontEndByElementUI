@@ -10,11 +10,10 @@
   import {roleFindAll} from "../../network/Role";
 
   import RoleTopBar from "./childComponents/RoleTopBar";
-  import RoleList from "./childComponents/RoleList";
   import ERoleList from "./childComponents/ERoleList";
   export default {
     name: "role",
-    components: {ERoleList, RoleList, RoleTopBar},
+    components: {ERoleList,  RoleTopBar},
     data(){
       return{
         roleList:[]

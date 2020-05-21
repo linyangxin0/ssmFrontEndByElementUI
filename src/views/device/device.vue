@@ -1,7 +1,6 @@
 <template>
   <div class="content">
     <device-top-bar @searchDevice="searchDevice" @findAll="findAll"/>
-<!--    <device-list :device-list="deviceList" @delDevice="delDevice"/>-->
     <e-device-list :device-list="deviceList" @delDevice="delDevice"/>
   </div>
 </template>
@@ -10,12 +9,11 @@
 
   import {deviceFindAll,deviceSearch,delDevice} from "../../network/device";
 
-  import DeviceList from "./childComponents/deviceList";
   import DeviceTopBar from "./childComponents/DeviceTopBar";
   import EDeviceList from "./childComponents/EDeviceList";
   export default {
     name: "device",
-    components: {EDeviceList, DeviceTopBar, DeviceList},
+    components: {EDeviceList, DeviceTopBar},
     data(){
       return{
         deviceList:[]

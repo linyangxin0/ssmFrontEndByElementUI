@@ -41,7 +41,15 @@
       label="操作">
       <template slot-scope="scope" v-if="$store.state.isAdmin">
         <el-button @click="editSong(scope.row)" type="text" size="big">编辑</el-button>
-        <el-button @click="delSong(scope.row)" type="text" size="big">删除</el-button>
+        <el-popconfirm
+          confirmButtonText='确定'
+          cancelButtonText='取消'
+          icon="el-icon-info"
+          iconColor="red"
+          @onConfirm="delSong(scope.row)"
+          title="确定删除？">
+          <el-button type="text" size="big" slot="reference" class="del-btn">删除</el-button>
+        </el-popconfirm>
       </template>
     </el-table-column>
   </el-table>
@@ -85,5 +93,7 @@
 </script>
 
 <style scoped>
-
+  .del-btn{
+    padding-left: 12px;
+  }
 </style>

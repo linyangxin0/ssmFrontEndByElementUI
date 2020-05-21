@@ -8,11 +8,10 @@
 <script>
   import {findSongListIn,cancelSongList} from "../../../network/deviceSong";
 
-  import AddDeviceSongList from "../childComponents/addDeviceSongList";
   import EAddDeviceSongList from "../childComponents/EAddDeviceSongList";
   export default {
     name: "addDeviceSong",
-    components: {EAddDeviceSongList, AddDeviceSongList},
+    components: {EAddDeviceSongList},
     data(){
       return{
         deviceId:'',

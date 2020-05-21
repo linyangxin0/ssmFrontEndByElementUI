@@ -25,7 +25,7 @@
     <el-table-column
       prop="url"
       label="URL"
-      width="150"
+      width="220"
       sortable>
     </el-table-column>
     <el-table-column

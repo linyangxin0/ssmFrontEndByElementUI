@@ -8,12 +8,11 @@
 <script>
   import {advertisementFindAll,advertisementSearch,delAdvertisementById} from "../../network/advertisement";
 
-  import AdvertisementList from "./childComponents/AdvertisementList";
   import AdvertisementTopBar from "./childComponents/advertisementTopBar";
   import EAdvertisementList from "./childComponents/EAdvertisementList";
   export default {
     name: "advertisement",
-    components: {EAdvertisementList, AdvertisementTopBar, AdvertisementList},
+    components: {EAdvertisementList, AdvertisementTopBar},
     data(){
       return{
         advertisementList:[]

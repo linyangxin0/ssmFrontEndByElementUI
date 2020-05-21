@@ -10,11 +10,10 @@
   import {userFindAll,userSearch,delUserById} from "../../network/user";
 
   import UserTopBar from "./childComponents/userTopBar";
-  import UserList from "./childComponents/UserList";
   import EUserList from "./childComponents/EUserList";
   export default {
     name: "user",
-    components: {EUserList, UserList, UserTopBar},
+    components: {EUserList, UserTopBar},
     data(){
       return{
         userList:[]

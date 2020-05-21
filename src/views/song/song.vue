@@ -7,13 +7,12 @@
 
 <script>
   import SongTopBar from "./childComponents/SongTopBar";
-  import SongList from "./childComponents/SongList";
   import {songFindAll,songSearch,delASong} from "../../network/song";
   import ESongList from "./childComponents/ESongList";
 
   export default {
     name: "song",
-    components: {ESongList, SongList, SongTopBar},
+    components: {ESongList, SongTopBar},
     data(){
       return{
         songsList:[],
@@ -43,7 +42,6 @@
         })
       },
       editSong(e){
-        console.log(e)
         this.theEditSong=e
         this.$router.push('/song/editSong/'+e)
       },

@@ -8,12 +8,11 @@
 <script>
 
   import {findSongNotIn,addSongToSongList} from "../../../network/songList";
-  import AddSongToSongListList from "../childComponents/addSongToSongListList";
   import EAddSongToSongListList from "../childComponents/EAddSongToSongListList";
 
   export default {
     name: "addSongToSongList",
-    components: {EAddSongToSongListList, AddSongToSongListList},
+    components: {EAddSongToSongListList},
     data(){
       return{
         id:0,

@@ -27,7 +27,15 @@
         <el-button @click="editAdvertisement(scope.row)" type="text" size="big">编辑</el-button>
         <el-button @click="addAdvertisementToDevice(scope.row)" type="text" size="big">添加设备</el-button>
         <el-button @click="delAdvertisementToDevice(scope.row)" type="text" size="big">查看设备</el-button>
-        <el-button @click="delAdvertisement(scope.row)" type="text" size="big">删除</el-button>
+        <el-popconfirm
+          confirmButtonText='确定'
+          cancelButtonText='取消'
+          icon="el-icon-info"
+          iconColor="red"
+          @onConfirm="delAdvertisement(scope.row)"
+          title="确定删除？">
+          <el-button type="text" size="big" slot="reference" class="del-btn">删除</el-button>
+        </el-popconfirm>
 
       </template>
     </el-table-column>
@@ -70,5 +78,7 @@
 </script>
 
 <style scoped>
-
+  .del-btn{
+    padding-left: 12px;
+  }
 </style>
