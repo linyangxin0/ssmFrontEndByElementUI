@@ -71,3 +71,22 @@ export function  editAdvertisement(id,context,getDate) {
     }
   })
 }
+
+export function  findDeviceInById(id) {
+  return request({
+    url:'/advertisement/findDeviceInById.do',
+    params:{
+      id
+    }
+  })
+}
+
+
+export function  delAdvertisementFromDevice(deviceId,advertisementId) {
+  return request({
+    url:'/advertisement/delAdvertisementFromDevice.do',
+    params:{
+      deviceId,advertisementId
+    }
+  })
+}

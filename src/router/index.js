@@ -9,7 +9,7 @@ const advertisement=()=>import('../views/advertisement/advertisement');
 const addAdvertisement=()=>import('../views/advertisement/childViews/addAdvertisement');
 const addAdvertisementToDevice=()=>import('../views/advertisement/childViews/addAdvertisementToDevice');
 const editAdvertisement=()=>import('../views/advertisement/childViews/editAdvertisement');
-
+const delAdvertisementToDevice=()=>import('../views/advertisement/childViews/delAdvertisementToDevice');
 
 
 const device=()=>import('../views/device/device');
@@ -90,6 +90,13 @@ VueRouter.prototype.push = function push (to) {
     },{
       path:'/advertisement/editAdvertisement/:id',
       component:editAdvertisement,
+      meta:{
+        showTab:true,
+        requiresAuth:true
+      }
+    },{
+      path:'/advertisement/delAdvertisementToDevice/:id',
+      component:delAdvertisementToDevice,
       meta:{
         showTab:true,
         requiresAuth:true

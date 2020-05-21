@@ -28,48 +28,49 @@
     <el-table-column
       label="操作">
       <template slot-scope="scope" v-if="$store.state.isAdmin">
-        <el-button @click="addAdvertisementTo(scope.row)" type="text" size="big">添加推送</el-button>
+        <el-button @click="delAdvertisementTo(scope.row)" type="text" size="big">取消推送</el-button>
       </template>
     </el-table-column>
   </el-table>
 </template>
 
 <script>
-  import {findDeviceNotIn,addAdvertisementToDevice} from "../../../network/advertisement";
+
+  import {findDeviceInById,delAdvertisementFromDevice} from "../../../network/advertisement";
 
   export default {
-    name: "addAdvertisementToDevice",
+    name: "delAdvertisementToDevice",
     data(){
       return{
         deviceList:[],
         advertisementId:0
       }
     },
-    created() {
-      this.advertisementId=this.$route.params.id
-      this._findDeviceNotIn()
-    },
     methods:{
-      _findDeviceNotIn(){
-        findDeviceNotIn(this.advertisementId).then(res=>{
-          this.deviceList=res
-        })
-      },
-      addAdvertisementTo(row){
-        addAdvertisementToDevice(this.advertisementId,row.id).then(res=>{
-          this.$message({
-            message: '添加推送成功',
-            type: 'success'
-          });
-          this._findDeviceNotIn()
-        })
-      },
       formatterStatus(row, column){
         return row.status==0?'离线':'在线'
       },
       formatterType(row, column){
         return row.type==0?'Android设备':'开发板设备'
       },
+      _findDeviceInById(){
+        findDeviceInById(this.advertisementId).then(res=>{
+          this.deviceList=res
+        })
+      },
+      delAdvertisementTo(row){
+        delAdvertisementFromDevice(row.id,this.advertisementId).then(res=>{
+          this.$message({
+            message: '取消推送成功',
+            type: 'success'
+          });
+          this._findDeviceInById()
+        })
+      }
+    },
+    created() {
+      this.advertisementId=this.$route.params.id
+      this._findDeviceInById()
     }
   }
 </script>

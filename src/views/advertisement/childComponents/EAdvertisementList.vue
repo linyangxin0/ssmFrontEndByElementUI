@@ -24,6 +24,7 @@
       <template slot-scope="scope" v-if="$store.state.isAdmin">
         <el-button @click="editAdvertisement(scope.row)" type="text" size="big">编辑</el-button>
         <el-button @click="addAdvertisementToDevice(scope.row)" type="text" size="big">添加设备</el-button>
+        <el-button @click="delAdvertisementToDevice(scope.row)" type="text" size="big">查看设备</el-button>
         <el-button @click="delAdvertisement(scope.row)" type="text" size="big">删除</el-button>
 
       </template>
@@ -58,6 +59,9 @@
       },
       addAdvertisementToDevice(row){
         this.$router.push('/advertisement/addAdvertisementToDevice/'+row.id)
+      },
+      delAdvertisementToDevice(row){
+        this.$router.push('/advertisement/delAdvertisementToDevice/'+row.id)
       }
     }
   }
