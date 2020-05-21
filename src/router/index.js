@@ -38,14 +38,16 @@ const addRoleToUser=()=>import('../views/user/childViews/addRoleToUser');
 const editUser=()=>import('../views/user/childViews/editUser');
 
 const notFound=()=>import('../views/404/404');
+const systemLog=()=>import('../views/systemLog/systemLog');
+
 
 
 Vue.use(VueRouter);
 
-const VueRouterPush = VueRouter.prototype.push
+const VueRouterPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push (to) {
   return VueRouterPush.call(this, to).catch(err => err)
-}
+};
 
   const routes = [
     {
@@ -230,6 +232,13 @@ VueRouter.prototype.push = function push (to) {
     },{
       path:'/user/editUser/:id',
       component:editUser,
+      meta:{
+        showTab:true,
+        requiresAuth:true
+      }
+    },{
+      path:'/systemLog',
+      component:systemLog,
       meta:{
         showTab:true,
         requiresAuth:true

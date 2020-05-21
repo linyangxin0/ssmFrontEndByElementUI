@@ -60,7 +60,7 @@
       </el-submenu>
       <el-submenu index="3">
         <template slot="title">
-          <i class="el-icon-document"></i>
+          <i class="el-icon-receiving"></i>
           <span slot="title">设备管理</span>
         </template>
         <el-menu-item-group>
@@ -69,6 +69,17 @@
           </router-link>
           <router-link to="/advertisement" class="router-link-init">
             <el-menu-item index="3-2">设备广告</el-menu-item>
+          </router-link>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="4">
+        <template slot="title">
+          <i class="el-icon-document"></i>
+          <span slot="title">系统日志</span>
+        </template>
+        <el-menu-item-group>
+          <router-link to="/systemLog" class="router-link-init">
+            <el-menu-item index="4-1">后台访问日志</el-menu-item>
           </router-link>
         </el-menu-item-group>
       </el-submenu>

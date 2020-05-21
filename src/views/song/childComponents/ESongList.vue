@@ -6,7 +6,8 @@
     <el-table-column
       prop="id"
       label="ID"
-      width="150">
+      width="150"
+      sortable>
     </el-table-column>
     <el-table-column
       prop="name"
@@ -27,6 +28,7 @@
       prop="updateTime"
       label="更新时间"
       width="200"
+      sortable
       :formatter="dateFormat">
     </el-table-column>
     <el-table-column

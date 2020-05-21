@@ -6,7 +6,8 @@
     <el-table-column
       prop="id"
       label="ID"
-      width="300">
+      width="300"
+      sortable>
     </el-table-column>
     <el-table-column
       prop="name"
