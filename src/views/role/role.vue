@@ -1,6 +1,7 @@
 <template>
   <div class="content">
-    <role-list :role-list="roleList"/>
+<!--    <role-list :role-list="roleList"/>-->
+    <e-role-list :role-list="roleList"/>
   </div>
 </template>
 
@@ -10,9 +11,10 @@
 
   import RoleTopBar from "./childComponents/RoleTopBar";
   import RoleList from "./childComponents/RoleList";
+  import ERoleList from "./childComponents/ERoleList";
   export default {
     name: "role",
-    components: {RoleList, RoleTopBar},
+    components: {ERoleList, RoleList, RoleTopBar},
     data(){
       return{
         roleList:[]

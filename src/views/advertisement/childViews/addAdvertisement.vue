@@ -4,24 +4,27 @@
       <tr>
         <td ><span>广告内容：</span></td>
         <td>
-          <input type="text" placeholder="请输入歌曲名称" class="add-input" v-model="addContext">
+          <el-input class="add-input" placeholder="请输入广告内容" v-model="addContext" clearable ></el-input>
         </td>
       </tr>
 
       <tr>
         <td><span>请选择日期：</span></td>
         <td>
-          <input type="date" class="add-input" v-model="addGetDate">
+          <el-date-picker v-model="addGetDate" type="date" placeholder="选择日期" class="add-input" value-format="yyyy-MM-dd"></el-date-picker>
+
         </td>
       </tr>
 
 
       <tr>
         <td class="btn-center">
-          <button class="add-btn" @click="clickAddSong">确定</button>
+          <el-button type="success" @click="clickAddSong">确定</el-button>
+
         </td>
         <td class="btn-center">
-          <button class="add-btn"  @click="backClick">取消</button>
+          <el-button type="info" @click="backClick">取消</el-button>
+
         </td>
       </tr>
     </table>
@@ -37,13 +40,16 @@
     data(){
       return{
         addContext:'',
-        addGetDate:Date,
+        addGetDate:'',
       }
     },
     methods:{
       clickAddSong(){
         addAdvertisement(this.addContext,this.addGetDate).then(res=>{
-          alert('添加成功')
+          this.$message({
+            message: '添加成功',
+            type: 'success'
+          });
           this.$router.back()
         })
       },
@@ -73,23 +79,13 @@
   }
 
   .add-input{
-    padding-left: 20px;
+    margin-left: 20px;
     width: 300px;
     height: 40px;
-    border-radius: 5px;
-    border: 2px solid #d3d3d3;
   }
 
   .btn-center{
     text-align: center;
   }
 
-  .add-btn{
-    width: 80px;
-    height: 40px;
-
-    border-radius: 2px;
-    border: none;
-    background-color: #d3d3d3;
-  }
 </style>

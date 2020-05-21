@@ -1,6 +1,7 @@
 <template>
   <div>
-    <add-song-to-song-list-list :song-list="songs" @addSongToSongList="addSongToSongList"/>
+<!--    <add-song-to-song-list-list :song-list="songs" @addSongToSongList="addSongToSongList"/>-->
+    <e-add-song-to-song-list-list :song-list="songs" @addSongToSongList="addSongToSongList"/>
   </div>
 </template>
 
@@ -8,10 +9,11 @@
 
   import {findSongNotIn,addSongToSongList} from "../../../network/songList";
   import AddSongToSongListList from "../childComponents/addSongToSongListList";
+  import EAddSongToSongListList from "../childComponents/EAddSongToSongListList";
 
   export default {
     name: "addSongToSongList",
-    components: {AddSongToSongListList},
+    components: {EAddSongToSongListList, AddSongToSongListList},
     data(){
       return{
         id:0,
@@ -27,7 +29,10 @@
       addSongToSongList(id){
         addSongToSongList(id,this.id).then(res=>{
           this._findSongNotIn()
-          alert('添加成功')
+          this.$message({
+            message: '添加成功',
+            type: 'success'
+          });
         })
       },
       _findSongNotIn(){

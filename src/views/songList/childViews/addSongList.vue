@@ -4,17 +4,20 @@
       <tr>
         <td ><span>歌单名称：</span></td>
         <td>
-          <input type="text" placeholder="请输入歌单名称" class="add-input" v-model="addName">
+<!--          <input type="text" placeholder="请输入歌单名称" class="add-input" v-model="addName">-->
+          <el-input class="add-input" placeholder="请输入歌单名称" v-model="addName" clearable ></el-input>
         </td>
       </tr>
 
 
       <tr>
         <td class="btn-center">
-          <button class="add-btn" @click="clickAddSong">确定</button>
+<!--          <button class="add-btn" @click="clickAddSong">确定</button>-->
+          <el-button type="success" @click="clickAddSong">确定</el-button>
         </td>
         <td class="btn-center">
-          <button class="add-btn"  @click="backClick">取消</button>
+<!--          <button class="add-btn"  @click="backClick">取消</button>-->
+          <el-button type="info" @click="backClick">取消</el-button>
         </td>
       </tr>
     </table>
@@ -35,7 +38,10 @@
     methods:{
       clickAddSong(){
         addSongList(this.addName).then(res=>{
-          alert('添加成功')
+          this.$message({
+            message: '添加成功',
+            type: 'success'
+          });
           this.$router.back()
         })
       },
@@ -65,11 +71,9 @@
   }
 
   .add-input{
-    padding-left: 20px;
+    margin-left: 20px;
     width: 300px;
     height: 40px;
-    border-radius: 5px;
-    border: 2px solid #d3d3d3;
   }
 
   .btn-center{

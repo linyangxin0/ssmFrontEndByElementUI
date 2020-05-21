@@ -1,7 +1,8 @@
 <template>
   <div class="content">
     <device-song-top-bar @searchDevice="searchDevice" @findAll="findAll"/>
-    <device-song-list :device-list="deviceList"/>
+<!--    <device-song-list :device-list="deviceList"/>-->
+    <e-device-song-list :device-list="deviceList"/>
   </div>
 </template>
 
@@ -12,6 +13,7 @@
   import DeviceSongList from "./childComponents/deviceSongList";
   import DeviceSongTopBar from "./childComponents/deviceSongTopBar";
   import {deviceSearch} from "../../network/device";
+  import EDeviceSongList from "./childComponents/EDeviceSongList";
 
   export default {
     name: "deviceSong",
@@ -20,7 +22,7 @@
         deviceList:[]
       }
     },
-    components: {DeviceSongTopBar, DeviceSongList},
+    components: {EDeviceSongList, DeviceSongTopBar, DeviceSongList},
     created() {
       deviceFindAll().then(res=>{
         this.deviceList=res

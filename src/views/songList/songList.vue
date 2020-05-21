@@ -1,9 +1,9 @@
 <template>
   <div class="content">
     <song-list-top-bar @searchSongList="searchSongList" @findAllSongList="findAllSongList"/>
-    <song-list-list :song-list-list="songListList"
-                    @getSongList="getSongList"
-                    @delSongList="delSongList"/>
+    <e-song-list-list :song-list-list="songListList"
+                      @getSongList="getSongList"
+                      @delSongList="delSongList"/>
   </div>
 </template>
 
@@ -13,10 +13,11 @@
   import SongListList from "./childComponents/SongListList";
 
   import {songListFindAll,delSongList,findSongListByName} from "../../network/songList";
+  import ESongListList from "./childComponents/ESongListList";
 
   export default {
     name: "songList",
-    components: {SongListTopBar, SongListList},
+    components: {ESongListList, SongListTopBar, SongListList},
     data(){
       return{
         songListList:[]
@@ -36,7 +37,10 @@
       },
       delSongList(id){
         delSongList(id).then(res=>{
-          alert('删除成功')
+          this.$message({
+            message: '删除成功',
+            type: 'success'
+          });
           this._songListFindAll()
         })
       },

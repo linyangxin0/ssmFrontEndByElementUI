@@ -39,7 +39,6 @@ const editUser=()=>import('../views/user/childViews/editUser');
 
 const notFound=()=>import('../views/404/404');
 
-const test=()=>import('../views/test/test');
 
 Vue.use(VueRouter);
 
@@ -228,10 +227,6 @@ VueRouter.prototype.push = function push (to) {
         showTab:true,
         requiresAuth:true
       }
-    },
-    {
-      path:'/test',
-      component:test,
     }
 ];
 

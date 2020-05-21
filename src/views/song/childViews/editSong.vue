@@ -35,7 +35,7 @@
       <tr>
         <td><span>请选择日期：</span></td>
         <td>
-          <el-date-picker v-model="editUpdateTime" type="date" placeholder="选择日期" class="edit-input"></el-date-picker>
+          <el-date-picker v-model="editUpdateTime" type="date" placeholder="选择日期" class="edit-input" value-format="yyyy-MM-dd"></el-date-picker>
 
         </td>
       </tr>
@@ -92,7 +92,10 @@
     methods:{
       clickEditSong(){
         editSong(this.editId,this.editName,this.editInfo,this.editAuthor,this.editUpdateTime,this.editStatus).then(res=>{
-          alert('编辑成功')
+          this.$message({
+            message: '编辑成功',
+            type: 'success'
+          });
           this.$router.back()
         })
       },
@@ -142,20 +145,10 @@
     margin-left: 20px;
     width: 300px;
     height: 40px;
-    /*border-radius: 5px;*/
-    /*border: 2px solid #d3d3d3;*/
   }
 
   .btn-center{
     text-align: center;
   }
 
-  .edit-btn{
-    width: 80px;
-    height: 40px;
-
-    border-radius: 2px;
-    border: none;
-    background-color: #d3d3d3;
-  }
 </style>

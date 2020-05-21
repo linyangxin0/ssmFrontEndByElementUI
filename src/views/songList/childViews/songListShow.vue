@@ -1,6 +1,7 @@
 <template>
   <div>
-    <song-list-show-list :song-list="songs" @delSongFromSongList="delSongFromSongList"/>
+<!--    <song-list-show-list :song-list="songs" @delSongFromSongList="delSongFromSongList"/>-->
+    <e-song-list-show-list :song-list="songs" @delSongFromSongList="delSongFromSongList"/>
   </div>
 </template>
 
@@ -8,10 +9,11 @@
 
   import {findSongListsSong,delSongFromSongList} from "../../../network/songList";
   import SongListShowList from "../childComponents/songListShowList";
+  import ESongListShowList from "../childComponents/ESongListShowList";
 
   export default {
     name: "songListShow",
-    components: {SongListShowList},
+    components: {ESongListShowList, SongListShowList},
     data(){
       return{
         id:0,
@@ -27,6 +29,10 @@
     methods:{
       delSongFromSongList(id){
         delSongFromSongList(id,this.id).then(res=>{
+          this.$message({
+            message: '成功移出歌单',
+            type: 'success'
+          });
           //刷新页面信息
           this._findSongListsSong(this.id)
         })

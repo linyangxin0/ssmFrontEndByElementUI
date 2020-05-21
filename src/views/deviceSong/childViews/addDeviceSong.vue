@@ -1,6 +1,7 @@
 <template>
   <div>
-    <add-device-song-list :song-list="songList" @cancelSongList="cancelSongList"/>
+<!--    <add-device-song-list :song-list="songList" @cancelSongList="cancelSongList"/>-->
+    <e-add-device-song-list :song-list="songList" @cancelSongList="cancelSongList"/>
   </div>
 </template>
 
@@ -8,9 +9,10 @@
   import {findSongListIn,cancelSongList} from "../../../network/deviceSong";
 
   import AddDeviceSongList from "../childComponents/addDeviceSongList";
+  import EAddDeviceSongList from "../childComponents/EAddDeviceSongList";
   export default {
     name: "addDeviceSong",
-    components: {AddDeviceSongList},
+    components: {EAddDeviceSongList, AddDeviceSongList},
     data(){
       return{
         deviceId:'',
@@ -29,7 +31,10 @@
       },
       cancelSongList(songListId){
         cancelSongList(songListId,this.deviceId).then(res=>{
-          alert('取消推送成功')
+          this.$message({
+            message: '取消推送成功',
+            type: 'success'
+          });
           this._findSongListIn()
         })
       }

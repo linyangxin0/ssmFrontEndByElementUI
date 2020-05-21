@@ -1,23 +1,25 @@
 <template>
-  <div class="list-content">
-    <div v-if="roles.length==0" class="none-content">
-      <span class="none-text">无可添加角色，或已添加所有角色.</span>
-    </div>
-    <table v-if="roles.length!=0">
-      <tr>
-        <th>序号</th>
-        <th>名称</th>
-        <th>操作</th>
-      </tr>
-      <tr v-for="item in roles">
-        <td>{{item.id}}</td>
-        <td>{{item.name}}</td>
-        <td>
-          <button class="list-btn" @click="addRole(item.id)">添加角色</button>
-        </td>
-      </tr>
-    </table>
-  </div>
+  <el-table
+    :data="roles"
+    border
+    style="width: 100%">
+    <el-table-column
+      prop="id"
+      label="ID"
+      width="300">
+    </el-table-column>
+    <el-table-column
+      prop="name"
+      label="角色名称"
+      width="300">
+    </el-table-column>
+    <el-table-column
+      label="操作">
+      <template slot-scope="scope" v-if="$store.state.isAdmin">
+        <el-button @click="addRole(scope.row)" type="text" size="big">添加角色</el-button>
+      </template>
+    </el-table-column>
+  </el-table>
 </template>
 
 <script>
@@ -37,9 +39,12 @@
       this._findRoleNotIn()
     },
     methods:{
-      addRole(id){
-        addRoleToUser(this.userId,id).then(res=>{
-          alert('添加成功')
+      addRole(row){
+        addRoleToUser(this.userId,row.id).then(res=>{
+          this.$message({
+            message: '添加成功',
+            type: 'success'
+          });
           this._findRoleNotIn()
         })
       },

@@ -30,12 +30,6 @@
 <script>
   export default {
     name: "deviceList",
-    filters:{
-      showDate:function (value) {
-        let date = new Date(value);
-        return formatDate(date, 'yyyy-MM-dd')
-      }
-    },
     props:{
       deviceList:{
         type:Array,

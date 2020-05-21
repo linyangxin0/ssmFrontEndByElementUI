@@ -1,6 +1,6 @@
 <template>
   <div>
-    <device-song-show-list :song-list="songLists" @addSongList="addSongList"/>
+    <e-device-song-show-list :song-list="songLists" @addSongList="addSongList"/>
   </div>
 </template>
 
@@ -8,9 +8,11 @@
   import {findSongListNotIn,addSongList} from "../../../network/deviceSong";
 
   import DeviceSongShowList from "../childComponents/deviceSongShowList";
+  import EDeviceSongList from "../childComponents/EDeviceSongList";
+  import EDeviceSongShowList from "../childComponents/EDeviceSongShowList";
   export default {
     name: "deviceSongShow",
-    components: {DeviceSongShowList},
+    components: {EDeviceSongShowList},
     data(){
       return{
         deviceId:'',
@@ -24,7 +26,10 @@
     methods:{
       addSongList(songListId){
         addSongList(songListId,this.deviceId).then(res=>{
-          alert('添加成功')
+          this.$message({
+            message: '添加成功',
+            type: 'success'
+          });
           this._findSongListNotIn()
         })
       },

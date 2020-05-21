@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <user-top-bar @searchUser="searchUser" @findAll="findAll"/>
-    <user-list :user-list="userList" @delUser="delUser"/>
+    <e-user-list :user-list="userList" @delUser="delUser"/>
   </div>
 </template>
 
@@ -11,9 +11,10 @@
 
   import UserTopBar from "./childComponents/userTopBar";
   import UserList from "./childComponents/UserList";
+  import EUserList from "./childComponents/EUserList";
   export default {
     name: "user",
-    components: {UserList, UserTopBar},
+    components: {EUserList, UserList, UserTopBar},
     data(){
       return{
         userList:[]
@@ -39,7 +40,10 @@
       delUser(id){
         delUserById(id).then(res=>{
           this._userFindAll()
-          alert('删除成功')
+          this.$message({
+            message: '删除成功',
+            type: 'success'
+          });
         })
       },
     }

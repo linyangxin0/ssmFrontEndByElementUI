@@ -1,16 +1,18 @@
 <template>
   <div>
-    <del-user-from-role-list :user-list="userList" @delUserFromRole="delUserFromRole"/>
+<!--    <del-user-from-role-list :user-list="userList" @delUserFromRole="delUserFromRole"/>-->
+    <e-del-user-from-role-list :user-list="userList" @delUserFromRole="delUserFromRole"/>
   </div>
 </template>
 
 <script>
   import {findUserByRoleId,delUserFromRole} from "../../../network/Role";
   import DelUserFromRoleList from "../childComponents/delUserFromRoleList";
+  import EDelUserFromRoleList from "../childComponents/EDelUserFromRoleList";
 
   export default {
     name: "delUserFromRole",
-    components: {DelUserFromRoleList},
+    components: {EDelUserFromRoleList, DelUserFromRoleList},
     data(){
       return{
         roleId:0,
@@ -26,7 +28,10 @@
     methods:{
       delUserFromRole(id){
         delUserFromRole(id,this.roleId).then(res=>{
-          alert('操作成功')
+          this.$message({
+            message: '操作成功',
+            type: 'success'
+          });
           this._findUserByRoleId()
         })
       },

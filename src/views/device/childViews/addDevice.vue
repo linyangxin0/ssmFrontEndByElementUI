@@ -5,43 +5,45 @@
       <tr>
         <td ><span>设备MAC码：</span></td>
         <td>
-          <input type="text" placeholder="请输入设备MAC码" class="add-input" v-model="addId">
+          <el-input class="add-input" placeholder="请输入设备MAC码" v-model="addId" clearable ></el-input>
         </td>
       </tr>
 
       <tr>
         <td ><span>设备名称：</span></td>
         <td>
-          <input type="text" placeholder="请输入设备名称" class="add-input" v-model="addName">
+          <el-input class="add-input" placeholder="请输入设备名称" v-model="addName" clearable ></el-input>
         </td>
       </tr>
 
       <tr>
         <td><span>请选择类型：</span></td>
         <td>
-          <select class="add-input" v-model="addType">
-            <option value="0">Android手机端</option>
-            <option value="1">开发板设备</option>
-          </select>
+          <el-select v-model="addType" placeholder="请选择类型" class="add-input">
+            <el-option value=0 label="Android手机端" :key="0"></el-option>
+            <el-option value=1 label="开发板设备" :key="1"></el-option>
+          </el-select>
         </td>
       </tr>
 
       <tr>
         <td><span>请选择状态：</span></td>
         <td>
-          <select class="add-input" v-model="addStatus">
-            <option value="0">离线</option>
-            <option value="1">在线</option>
-          </select>
+          <el-select v-model="addStatus" placeholder="请选择状态" class="add-input">
+            <el-option value=0 label="离线" :key="0"></el-option>
+            <el-option value=1 label="在线" :key="1"></el-option>
+          </el-select>
         </td>
       </tr>
 
       <tr>
         <td class="btn-center">
-          <button class="add-btn" @click="clickAddDevice">确定</button>
+          <el-button type="success" @click="clickAddDevice">确定</el-button>
+
         </td>
         <td class="btn-center">
-          <button class="add-btn"  @click="backClick">取消</button>
+          <el-button type="info" @click="backClick">取消</el-button>
+
         </td>
       </tr>
     </table>
@@ -58,14 +60,17 @@
       return{
         addId:'',
         addName:'',
-        addType:0,
-        addStatus:0
+        addType:'0',
+        addStatus:'0'
       }
     },
     methods:{
       clickAddDevice(){
         addDevice(this.addId,this.addName,this.addType,this.addStatus).then(res=>{
-            alert('添加成功');
+          this.$message({
+            message: '添加成功',
+            type: 'success'
+          });
             this.$router.back();
         })
       },
@@ -95,23 +100,12 @@
   }
 
   .add-input{
-    padding-left: 20px;
+    margin-left: 20px;
     width: 300px;
     height: 40px;
-    border-radius: 5px;
-    border: 2px solid #d3d3d3;
   }
 
   .btn-center{
     text-align: center;
-  }
-
-  .add-btn{
-    width: 80px;
-    height: 40px;
-
-    border-radius: 2px;
-    border: none;
-    background-color: #d3d3d3;
   }
 </style>

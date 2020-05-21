@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <advertisement-top-bar @searchAdvertisement="searchAdvertisement" @findAll="findAll"/>
-    <advertisement-list :advertisement-list="advertisementList" @delAdvertisement="delAdvertisement"/>
+    <e-advertisement-list :advertisement-list="advertisementList" @delAdvertisement="delAdvertisement"/>
   </div>
 </template>
 
@@ -10,9 +10,10 @@
 
   import AdvertisementList from "./childComponents/AdvertisementList";
   import AdvertisementTopBar from "./childComponents/advertisementTopBar";
+  import EAdvertisementList from "./childComponents/EAdvertisementList";
   export default {
     name: "advertisement",
-    components: {AdvertisementTopBar, AdvertisementList},
+    components: {EAdvertisementList, AdvertisementTopBar, AdvertisementList},
     data(){
       return{
         advertisementList:[]
@@ -37,7 +38,10 @@
       },
       delAdvertisement(id){
         delAdvertisementById(id).then(res=>{
-          alert('删除成功')
+          this.$message({
+            message: '删除成功',
+            type: 'success'
+          });
           this._advertisementFindAll()
         })
       }

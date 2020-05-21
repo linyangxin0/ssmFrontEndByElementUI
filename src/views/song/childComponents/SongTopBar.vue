@@ -39,37 +39,12 @@
   }
 
   .search-input{
-    /*height: 30px;*/
-    /*border-radius: 5px;*/
-    /*border: 1.5px #adadad solid;*/
-    /*padding-left: 20px;*/
-
     width: 300px;
 
   }
 
   .top-btn{
     margin-left: 30px;
-  }
-
-  .search-btn{
-    margin-left: 30px;
-    border-radius: 5px;
-    height: 35px;
-    width: 60px;
-    background-color: #c8c8c8;
-    border: none;
-    cursor: pointer;
-  }
-
-  .all-btn{
-    margin-left: 30px;
-    border-radius: 5px;
-    height: 35px;
-    width: 60px;
-    background-color: #ececec;
-    border: 1px #c8c8c8 solid;
-    cursor: pointer;
   }
 
   .btn{

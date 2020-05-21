@@ -1,7 +1,8 @@
 <template>
   <div class="content">
     <device-top-bar @searchDevice="searchDevice" @findAll="findAll"/>
-    <device-list :device-list="deviceList" @delDevice="delDevice"/>
+<!--    <device-list :device-list="deviceList" @delDevice="delDevice"/>-->
+    <e-device-list :device-list="deviceList" @delDevice="delDevice"/>
   </div>
 </template>
 
@@ -11,9 +12,10 @@
 
   import DeviceList from "./childComponents/deviceList";
   import DeviceTopBar from "./childComponents/DeviceTopBar";
+  import EDeviceList from "./childComponents/EDeviceList";
   export default {
     name: "device",
-    components: {DeviceTopBar, DeviceList},
+    components: {EDeviceList, DeviceTopBar, DeviceList},
     data(){
       return{
         deviceList:[]
@@ -38,7 +40,10 @@
       },
       delDevice(id){
         delDevice(id).then(res=>{
-          alert("删除成功")
+          this.$message({
+            message: '删除成功',
+            type: 'success'
+          });
           this._deviceFindAll()
         })
       }

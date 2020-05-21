@@ -22,10 +22,20 @@ export function request(config) {
   //2.2响应拦截,也要return出去
   //1、可以对数据进行处理
   instance.interceptors.response.use(res=>{
+    console.log(res)
 
     let data = res.data;
     // * 正常返回数据
     if (res.status === 200) {
+      // * 返回data
+      return data
+    }
+    if (res.status === 500) {
+      // console.log('')
+      this.$message({
+        message: '请校验输入内容',
+        type: 'success'
+      });
       // * 返回data
       return data
     }
@@ -34,6 +44,7 @@ export function request(config) {
     if (data.code === 1001) {
       router.replace('/login')
     }
+
     return  Promise.reject(data);
   },err=>{
     // console.log(err);

@@ -38,8 +38,7 @@
     <el-table-column
       label="操作">
       <template slot-scope="scope" v-if="$store.state.isAdmin">
-        <el-button @click="editSong(scope.row)" type="text" size="big">编辑</el-button>
-        <el-button @click="delSong(scope.row)" type="text" size="big">删除</el-button>
+        <el-button @click="delSongFromSongList(scope.row)" type="text" size="big">移出歌单</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -47,28 +46,20 @@
 
 <script>
 
-  import {formatDate} from "@/common/utils";
-
+  import {formatDate} from "../../../common/utils";
 
   export default {
-    name: "ESongList",
+    name: "ESongListShowList",
     methods: {
-      editSong(row) {
-        this.$emit("editSong",row.id)
-      },
-      delSong(row){
-        this.$emit("delSong",row.id)
-        this.$message({
-          message: '删除成功',
-          type: 'success'
-        });
-      },
       dateFormat:function(row, column){
         let date = new Date(row.updateTime);
         return formatDate(date, 'yyyy-MM-dd')
       },
       formatterStatus(row, column){
         return row.status==0?'设计中':'发布'
+      },
+      delSongFromSongList(row){
+        this.$emit("delSongFromSongList",row.id)
       }
     },
     props:{

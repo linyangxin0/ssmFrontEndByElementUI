@@ -27,7 +27,7 @@
       <tr>
         <td><span>请选择日期：</span></td>
         <td>
-          <el-date-picker v-model="addUpdateTime" type="date" placeholder="选择日期" class="add-input"></el-date-picker>
+          <el-date-picker v-model="addUpdateTime" type="date" placeholder="选择日期" class="add-input" value-format="yyyy-MM-dd"></el-date-picker>
         </td>
       </tr>
 
@@ -70,23 +70,11 @@
     },
     methods:{
       clickAddSong(){
-        // let song=this.$qs.stringify({
-        //   name:this.addName,
-        //   info:this.addInfo,
-        //   author:this.addAuthor,
-        //   updateTime:this.addUpdateTime,
-        //   status:this.addStatus
-        // })
-
-        // let song={
-        //   'name':this.addName,
-        //   'info':this.addInfo,
-        //   'author':this.addAuthor,
-        //   'updateTime':this.addUpdateTime,
-        //   'status':this.addStatus
-        // }
         addSong(this.addName,this.addInfo,this.addAuthor,this.addUpdateTime,this.addStatus).then(res=>{
-          alert('添加成功')
+          this.$message({
+            message: '添加成功',
+            type: 'success'
+          });
           this.$router.back()
         })
       },
@@ -119,20 +107,11 @@
     margin-left: 20px;
     width: 300px;
     height: 40px;
-    /*border-radius: 5px;*/
-    /*border: 2px solid #d3d3d3;*/
   }
 
   .btn-center{
     text-align: center;
   }
 
-  .add-btn{
-    width: 80px;
-    height: 40px;
 
-    border-radius: 2px;
-    border: none;
-    background-color: #d3d3d3;
-  }
 </style>
