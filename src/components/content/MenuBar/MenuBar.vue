@@ -115,6 +115,12 @@
 </script>
 
 <style scoped>
+
+  .router-click{
+    text-decoration: none;
+    color: #ff7f7d;
+  }
+
   .top-btn{
     position: relative;
     bottom: 15px;
@@ -140,7 +146,7 @@
   }
 
   .un-login{
-    margin: 10px;
+    margin: 20px;
   }
 
   .el-menu-vertical-demo:not(.el-menu--collapse) {
