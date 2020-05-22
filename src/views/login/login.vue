@@ -7,10 +7,10 @@
         <div class="loginform">
           <ul>
             <li>
-              <input type="text" class="loginuser" id="user_name" name="username" placeholder="请输入用户名" v-model="name"/>
+              <input type="text" class="loginuser" placeholder="请输入用户名" v-model="name"/>
             </li>
             <li>
-              <input type="password" class="loginpwd" id="password" name="password" placeholder="请输入密码" v-model="password"/>
+              <input type="password" class="loginpwd" placeholder="请输入密码" v-model="password"/>
             </li>
             <li>
               <button class="loginbtn" @click="loginClick">登录</button>
@@ -28,7 +28,6 @@
 
 <script>
 
-  import axios from 'axios'
   import {login} from "../../network/user";
 
   export default {
@@ -46,6 +45,7 @@
           localStorage.setItem('token', res.data.token);
           localStorage.setItem('userId', res.data.userId);
           localStorage.setItem('isAdmin', res.data.isAdmin);
+          this.$store.commit('setState2', [`${this.spm}Content`, 'isShow', false])
           this.$store.commit('addUserName', res.data.user.name)
           this.$store.commit('changeIsAdmin', res.data.isAdmin)
           this.$message({
