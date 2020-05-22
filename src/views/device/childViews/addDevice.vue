@@ -66,13 +66,20 @@
     },
     methods:{
       clickAddDevice(){
-        addDevice(this.addId,this.addName,this.addType,this.addStatus).then(res=>{
-          this.$message({
-            message: '添加成功',
-            type: 'success'
-          });
+        if (this.addId.length==12){
+          addDevice(this.addId,this.addName,this.addType,this.addStatus).then(res=>{
+            this.$message({
+              message: '添加成功',
+              type: 'success'
+            });
             this.$router.back();
-        })
+          })
+        }else {
+          this.$message({
+            message: '请输入正确的12位设备MAC码',
+            type: 'warning'
+          });
+        }
       },
       backClick(){
         this.$router.back()

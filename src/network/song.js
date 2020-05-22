@@ -15,7 +15,6 @@ export function  songSearch(searchText) {
   })
 }
 
-//未完成优化，为解决bug
 export function  addSong(name,info,author,updateTime,status) {
   return request({
     url:'/song/saveSong.do',
@@ -26,6 +25,17 @@ export function  addSong(name,info,author,updateTime,status) {
     }
   })
 }
+
+// export function  addSong(song) {
+//   return request({
+//     url:'/song/saveSong.do',
+//     method:'POST',
+//     // headers:{'Content-Type':'application/x-www-form-urlencoded'},
+//     data: {
+//       song
+//     }
+//   })
+// }
 
 
 export function  delASong(id) {
@@ -47,12 +57,10 @@ export function  findSongById(id) {
 }
 
 
-//未完成优化，为解决bug
+
 export function  editSong(id,name,info,author,updateTime,status) {
   return request({
     url:'/song/editSong.do',
-    // method:'POST',
-    // headers:{'Content-Type':'application/x-www-form-urlencoded'},
     params: {
       id,name,info,author,updateTime,status
     }

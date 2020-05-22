@@ -2,6 +2,7 @@
   <el-table
     :data="userList"
     border
+    max-height="650"
     style="width: 100%">
     <el-table-column
       prop="id"

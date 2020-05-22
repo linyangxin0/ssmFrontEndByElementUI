@@ -16,11 +16,11 @@ export function  deviceSearch(searchText) {
   })
 }
 
-export function  addDevice(addId,addName,addType,addStatus) {
+export function  addDevice(id,name,type,status) {
   return request({
     url:'/device/addDevice.do',
     params:{
-      addId,addName,addType,addStatus
+      id,name,type,status
     }
   })
 }
@@ -44,11 +44,11 @@ export function  findDeviceById(id) {
   })
 }
 
-export function  editDevice(addId,addName,addType,addStatus) {
+export function  editDevice(id,name,type,status) {
   return request({
     url:'/device/editDevice.do',
     params:{
-      addId,addName,addType,addStatus
+      id,name,type,status
     }
   })
 }

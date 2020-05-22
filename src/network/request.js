@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { Message } from 'element-ui';
+
 
 export function request(config) {
   // 1创建实例
@@ -17,7 +19,7 @@ export function request(config) {
     }
     return config;
   },error => {
-    // console.log(err);
+    console.log(error);
   })
   //2.2响应拦截,也要return出去
   //1、可以对数据进行处理
@@ -46,7 +48,11 @@ export function request(config) {
 
     return  Promise.reject(data);
   },err=>{
-    // console.log(err);
+    //请求失败提示
+    Message({
+      message: '请求失败',
+      type: 'warning'
+    });
   })
 
   //发送真正的网络请求
