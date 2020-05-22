@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="$store.getters.userName!=''">
+    <div v-if="$store.getters.userName!=null">
       <el-avatar class="top-avatar" v-if="$store.getters.isAdmin">admin</el-avatar>
       <el-avatar class="top-avatar" v-if="!$store.getters.isAdmin">user</el-avatar>
       <span class="top-user">{{$store.getters.userName}}</span>
@@ -15,7 +15,7 @@
         <el-button slot="reference" class="top-btn-btm">登出</el-button>
       </el-popconfirm>
     </div>
-    <div v-if="$store.getters.userName==''" class="un-login">
+    <div v-if="$store.getters.userName==null" class="un-login">
       <span>未登录系统,</span>
       <router-link to="/login" class="router-click ">
         <span>点击登录</span>
@@ -106,6 +106,7 @@
       logoutBtn(){
         setTimeout(()=>{
           localStorage.clear()
+          sessionStorage.clear()
           this.$store.commit("removeUserName")
           this.$router.push('/login')
         },500)
