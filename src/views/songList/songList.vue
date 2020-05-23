@@ -3,7 +3,7 @@
     <song-list-top-bar @searchSongList="searchSongList" @findAllSongList="findAllSongList"/>
     <e-song-list-list :song-list-list="songListList"
                       @getSongList="getSongList"
-                      @delSongList="delSongList"/>
+                      @delSongList="delSongList" @refreshList="refreshList"/>
   </div>
 </template>
 
@@ -50,9 +50,11 @@
       },
       findAllSongList(){
         this._songListFindAll()
+      },
+      refreshList(){
+        this._songListFindAll()
       }
     }
-
   }
 </script>
 

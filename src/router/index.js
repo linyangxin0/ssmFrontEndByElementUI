@@ -40,6 +40,8 @@ const editUser=()=>import('../views/user/childViews/editUser');
 const notFound=()=>import('../views/404/404');
 const systemLog=()=>import('../views/systemLog/systemLog');
 
+const changePassword=()=>import('../views/changPassword/changePassword');
+
 
 
 Vue.use(VueRouter);
@@ -239,6 +241,14 @@ VueRouter.prototype.push = function push (to) {
     },{
       path:'/systemLog',
       component:systemLog,
+      meta:{
+        showTab:true,
+        requiresAuth:true
+      }
+    },
+    {
+      path:'/changePassword/:id',
+      component:changePassword,
       meta:{
         showTab:true,
         requiresAuth:true

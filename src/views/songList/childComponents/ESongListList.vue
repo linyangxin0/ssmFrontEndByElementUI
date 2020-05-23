@@ -19,6 +19,7 @@
       <template slot-scope="scope" v-if="$store.state.isAdmin">
         <el-button @click="getSongList(scope.row)" type="text" size="big">查看</el-button>
         <el-button @click="addSongToSongList(scope.row)" type="text" size="big">添加</el-button>
+        <el-button type="text" @click="open(scope.row)">修改</el-button>
         <el-popconfirm
           confirmButtonText='确定'
           cancelButtonText='取消'
@@ -34,6 +35,9 @@
 </template>
 
 <script>
+
+  import {editSongList} from "../../../network/songList";
+
   export default {
     name: "ESongListList",
     props:{
@@ -53,6 +57,27 @@
       },
       delSongList(row){
         this.$emit("delSongList",row.id)
+      },
+      open(row) {
+        this.$prompt('请输入新的专辑名称', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          inputPattern: '',
+        }).then(({ value }) => {
+
+          editSongList(row.id,value).then(res=>{
+            this.$emit('refreshList')
+            this.$message({
+              type: 'success',
+              message: '修改成功'
+            });
+          })
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '取消输入'
+          });
+        });
       }
     }
   }

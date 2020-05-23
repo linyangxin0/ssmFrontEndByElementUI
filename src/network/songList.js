@@ -73,6 +73,15 @@ export function  addSongList(name) {
   })
 }
 
+export function  editSongList(id,name) {
+  return request({
+    url:'/songList/editSongList.do',
+    params:{
+      id,name
+    }
+  })
+}
+
 
 
 

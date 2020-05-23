@@ -14,6 +14,7 @@
         class="top-btn">
         <el-button slot="reference" class="top-btn-btm">登出</el-button>
       </el-popconfirm>
+      <el-button class="top-btn-btm change-btn" @click="changPwdClick">修改密码</el-button>
     </div>
     <div v-if="$store.getters.userName==null" class="un-login">
       <span>未登录系统,</span>
@@ -93,7 +94,6 @@
     data() {
       return {
         isCollapse: false,
-
       };
     },
     methods: {
@@ -110,8 +110,11 @@
           this.$store.commit("removeUserName")
           this.$router.push('/login')
         },500)
+      },
+      changPwdClick(){
+        this.$router.push('/changePassword/'+localStorage.getItem('userId'))
       }
-    }
+    },
   }
 </script>
 
@@ -129,7 +132,15 @@
   }
 
   .top-btn-btm{
-    padding: 5px 10px;
+    position: relative;
+    right: 12px;
+
+    padding: 5px 7px;
+  }
+
+  .change-btn{
+    position: relative;
+    bottom: 15px;
   }
 
   .top-avatar{
@@ -143,7 +154,7 @@
   .top-user{
     position: relative;
     bottom: 50px;
-    left: 30px;
+    left: 40px;
   }
 
   .un-login{

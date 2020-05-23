@@ -26,7 +26,6 @@ export function  userSearch(searchText) {
   })
 }
 
-//未完成优化，为解决bug
 export function  addUser(name,status) {
   return request({
     url:'/user/addUser.do',
@@ -82,5 +81,16 @@ export function  updateUser(id,name,status) {
     }
   })
 }
+
+export function  updatePassword(id,newPassword) {
+  return request({
+    url:'/user/updatePassword.do',
+    params:{
+      id,newPassword
+    }
+  })
+}
+
+
 
 
